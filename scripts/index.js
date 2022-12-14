@@ -7,11 +7,11 @@ const profileTitle = document.querySelector('.profile__title');
 const popupAboutUser = document.querySelector('.popup__input_user_about');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 
-openPopupButton.addEventListener('click', (event) =>{
+openPopupButton.addEventListener('click', (event) => {
     popup.classList.add('popup_opened');
 })
 
-popupCloseButton.addEventListener('clik', () =>{
+popupCloseButton.addEventListener('clik', () => {
     popup.classList.remove('popup_opened');
 })
 

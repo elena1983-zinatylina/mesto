@@ -137,6 +137,11 @@
 
 }
 
+.profile__add-button:hover {
+   opacity: 0.6;
+   cursor: pointer;
+}
+
 @media (max-width: 1279px) {
    .profile__add-button {
       min-width: 100px;
@@ -241,6 +246,11 @@
    margin: 0;
    margin-left: -25px;
    border-radius: 1px #FFFFFF;
+}
+
+.profile__edit-button:hover {
+   opacity: 0.6;
+   cursor: pointer;
 }
 
 @media (max-width: 767px) {
@@ -417,6 +427,18 @@
    border: none;
 }
 
+.element__group-button:hover {
+   opacity: 0.5;
+   background: #000000;
+   cursor: pointer;
+}
+
+.element__group-button:active {
+   background: url(./images/like-Union.png);
+   background-repeat: no-repeat;
+   cursor: pointer;
+}
+
 @media (max-width: 320px) {
    .element__group-button {
       width: 30px;
@@ -492,7 +514,7 @@
    border-radius: 10px;
    margin: 195px auto;
    position: relative;
-   
+
 }
 
 @media (max-width: 460px) {
@@ -515,6 +537,11 @@
    padding: 0;
    top: -40px;
    right: -40px;
+}
+
+.popup__close-button:hover {
+   opacity: 0.6;
+   background-repeat: no-repeat;
 }
 
 @media (max-width: 550px) {
@@ -559,6 +586,11 @@
    padding: 0;
    margin-top: 63px;
 
+}
+
+.popup__submit-button:hover {
+   opacity: 0.8;
+   background-repeat: no-repeat;
 }
 
 @media (max-width: 320px) {
