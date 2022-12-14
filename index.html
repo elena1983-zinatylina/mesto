@@ -5,30 +5,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Зинатулина Елена Евгеньевна">
-    <meta name="description" content="Проект Место с Яндекс Практикумом">
+    <meta name="description" content="Проект Место с Яндекс Практикумом в Краснодарском крае">
     <link rel="stylesheet" href="style.css">
     <title>Место</title>
 </head>
+
 <body class="page">
     <header class="header">
-       <img class="header__logo" alt="логотип Mесто Россия" src="./images 4 sprint/header__logo.png">
+        <img class="header__logo" alt="логотип Mесто Россия" src="./images/header__logo.png">
     </header>
     <main>
         <section class="profile">
-           <div class="profile__place">
-            <img class="profile__avatar" alt="картика автора" src="./images 4 sprint/photo_avaKrasnodar.jpg">
+            <img class="profile__avatar" alt="картика Краснодар Аврора" src="./images/ava Краснодар.jpg">
             <div class="profile__info">
-              <h1 c></h1>  
+                <h1 class="profile__title">Краснодар</h1>
+                <button type="button" class="profile__edit-button"></button>
+                <p class="profile__subtitle">Любимый край</p>
             </div>
-        <button class="profile__add-button"></button>
-           </div>
-
-            </div>
+            <button type="button" class="profile__add-button"></button>
         </section>
-    
+        <section class="elements">
+            <ul class="element">
+                <li class="element__card">
+                    <img class="element__image" alt="Картинка Краснодар" src="./images/photo_Krasnodar.jpg">
+                    <div class="element__mask-group">
+                    <h3 class="element__title">Краснодар</h3>
+                    <button class="element__group-button"></button>
+                    </div>
+                </li>
+                <li class="element__card">
+                    <img class="element__image" alt="Картинка Геленджик" src="./images/photo-Gelenjik.jpg">
+                    <div class="element__mask-group">
+                    <h3 class="element__title">Геленджик</h3>
+                    <button class="element__group-button"></button>
+                    </div>
+                </li>
+                <li class="element__card">
+                    <img class="element__image" alt="Картинка Новороссийск" src="./images/photo_Novoross.jpg">
+                    <div class="element__mask-group">
+                    <h3 class="element__title">Новороссийск</h3>
+                    <button class="element__group-button"></button>
+                    </div>
+                </li>
+                <li class="element__card">
+                    <img class="element__image" alt="Картинка плато Лаго-Наки" src="./images/photo_Lagonaki.jpg">
+                    <div class="element__mask-group">
+                    <h3 class="element__title">Лаго-Наки</h3>
+                    <button class="element__group-button"></button>
+                    </div>
+                </li>
+                <li class="element__card">
+                    <img class="element__image" alt="Картинка Горячий Ключ" src="./images/photo_G.Kluch.jpg">
+                    <div class="element__mask-group">
+                    <h3 class="element__title">Горячий Ключ</h3>
+                    <button class="element__group-button"></button>
+                    </div>
+                </li>
+                <li class="element__card">
+                    <img class="element__image" alt="Картинка водопады Руфабго" src="./images/photo_Rufabgo.jpg">
+                    <div class="element__mask-group">
+                    <h3 class="element__title">Руфабго</h3>
+                    <button class="element__group-button"></button>
+                </div>
+                </li>
+            </ul>
+        </section>
     </main>
-    <footer>
+    <footer class="footer">
         <p class="footer__copyright">&copy; 2022 Зинатулина Елена</p>
     </footer>
+    <div class="popup">
+        <div class="popup__content"> 
+            <button class="popup__close-button" type="button"></button>
+            <h3 class="popup__header">Редактировать профиль</h3>
+            <form class="popup__profile" name="popupProfile">
+                <input type="text" class="popup__input popup__input_user_name" name="popupNameUser" 
+                 placeholder="Жак-Ив Кусто" required>
+                <input type="text" class="popup__input popup__input_user_about" name="popupAboutUser"
+                  placeholder="Исследователь океана" required>
+                 <button class="popup__submit-button" type="submit">Сохранить</button>
+            </form>
+        </div>
+    </div>
+    <script src="./scripts/index.js"></script>
 </body>
+
 </html>
