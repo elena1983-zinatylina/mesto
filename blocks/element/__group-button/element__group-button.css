@@ -1,0 +1,27 @@
+.element__group-button {
+    background: url(../../../images/like.png)center;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 22px;
+    height: 19px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    cursor: pointer;
+}
+
+.element__group-button:hover {
+    opacity: 0.5;
+    background: #000000;
+}
+
+.element__group-button:active {
+    background: url(../../../images/like-Union.png);
+    background-repeat: no-repeat;
+}
+
+@media (max-width: 320px) {
+    .element__group-button {
+        width: 30px;
+    }
+}
