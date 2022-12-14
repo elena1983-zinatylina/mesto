@@ -492,6 +492,7 @@
    border-radius: 10px;
    margin: 195px auto;
    position: relative;
+   
 }
 
 @media (max-width: 460px) {
@@ -526,7 +527,6 @@
 }
 
 .popup__header {
-   font-family: 'Inter';
    font-weight: 900;
    font-size: 24px;
    line-height: 28px;
@@ -535,13 +535,7 @@
    padding: 0;
    max-width: 330px;
    height: 23px;
-   width: 100%;
 }
-
-.popup__input_user_name{}
-
-.popup__input_user_about{}
-
 
 @media (max-width: 320px) {
    .popup__header {
@@ -610,3 +604,7 @@
       margin-top: 35px;
    }
 }
+
+.popup__input_user_name {}
+
+.popup__input_user_about {}
