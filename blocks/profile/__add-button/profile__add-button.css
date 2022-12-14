@@ -38,9 +38,3 @@
         margin: 0;
     }
 }
-@media (max-width: 320px) {
-    .profile__add-button {
-        max-width: 282px;
-        max-height: 50px;
-    }
-}

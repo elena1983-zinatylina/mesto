@@ -8,7 +8,7 @@
     font-weight: 500;
     font-size: 46px;
     line-height: 48px;
-    color: #FFFFFF;
+    color:rgba (255, 255, 255);
 }
 
 @media (max-width: 1279px) {
