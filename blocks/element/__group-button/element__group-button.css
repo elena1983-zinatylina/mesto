@@ -1,5 +1,5 @@
 .element__group-button {
-    background: url(../../../images/like.png)center;
+    background-image: url('../../../images/like.png');
     background-position: center;
     background-repeat: no-repeat;
     width: 22px;
@@ -13,11 +13,6 @@
 .element__group-button:hover {
     opacity: 0.5;
     
-}
-
-.element__group-button:active {
-    background: url(../../../images/like-Union.png);
-    background-repeat: no-repeat;
 }
 
 @media (max-width: 320px) {

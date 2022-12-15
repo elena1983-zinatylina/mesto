@@ -9,18 +9,22 @@
     font-size: 46px;
     line-height: 48px;
     color: rgba(255, 255, 255);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 @media (max-width: 1279px) {
     .profile__title {
-        font-size: max(4vw, min(30px));
+        font-size: max(3.59vw, min(36px));
         line-height: 48px;
+        
     }
 }
 
 @media (max-width: 767px) {
     .profile__title {
-        font-size: max(6vw, min(30px));
+        font-size: max(4.69vw, min(30px));
         line-height: max(6.26vw, min(30px));
         text-align: center;
         margin: 0 auto;
