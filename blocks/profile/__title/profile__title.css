@@ -26,6 +26,7 @@
         line-height: max(6.26vw, min(30px));
         text-align: center;
         margin: 0 auto;
+        max-width: 210px;
     }
 }
 

@@ -13,16 +13,9 @@
 
 @media (max-width: 767px) {
     .profile__info {
-        max-width: 330px;
+        max-width: 282px;
         max-height: 80px;
         row-gap: 0;
         margin-bottom: 36px;
-    }
-}
-
-@media (max-width: 330px) {
-    .profile__info {
-        min-width: 282px;
-        min-height: 54px;
     }
 }
