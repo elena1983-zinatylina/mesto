@@ -24,58 +24,7 @@
             </div>
             <button type="button" class="profile__add-button"></button>
         </section>
-        <section class="elements">
-            <ul class="elements__container">
-                <li class="card">
-                    <img class="card__image" alt="Картинка Краснодар" src="./images/photo_Krasnodar.jpg">
-                    <div class="card__mask-group">
-                        <h3 class="card__title">Краснодар</h3>
-                        <button type="button" class="card__delete-button" title="Удалить карточку"></button>
-                        <button type="button" class="card__like-button" title="Лайк"></button>
-                    </div>
-                </li>
-                <li class="card">
-                    <img class="card__image" alt="Картинка Геленджик" src="./images/photo-Gelenjik.jpg">
-                    <div class="card__mask-group">
-                        <h3 class="card__title">Геленджик</h3>
-                        <button type="button" class="card__delete-button card__delete-button_active" title="Удалить карточку"></button>
-                        <button type="button" class="card__like-button" title="Лайк"></button>
-                    </div>
-                </li>
-                <li class="card">
-                    <img class="card__image" alt="Картинка Новороссийск" src="./images/photo_Novoross.jpg">
-                    <div class="card__mask-group">
-                        <h3 class="card__title">Новороссийск</h3>
-                        <button type="button" class="card__delete-button element__delete-button_active" title="Удалить карточку"></button>
-                        <button type="button" class="card__like-button" title="Лайк"></button>
-                    </div>
-                </li>
-                <li class="card">
-                    <img class="card__image" alt="Картинка плато Лаго-Наки" src="./images/photo_Lagonaki.jpg">
-                    <div class="card__mask-group">
-                        <h3 class="card__title">Лаго-Наки</h3>
-                        <button type="button" class="card__delete-button card__delete-button_active" title="Удалить карточку"></button>
-                        <button type="button" class="card__like-button" title="Лайк"></button>
-                    </div>
-                </li>
-                <li class="card">
-                    <img class="card__image" alt="Картинка Горячий Ключ" src="./images/photo_G.Kluch.jpg">
-                    <div class="card__mask-group">
-                        <h3 class="card__title">Горячий Ключ</h3>
-                        <button type="button" class="card__delete-button card__delete-button_active" title="Удалить карточку"></button>
-                        <button type="button" class="card__like-button" title="Лайк"></button>
-                    </div>
-                </li>
-                <li class="card">
-                    <img class="card__image" alt="Картинка водопады Руфабго" src="./images/photo_Rufabgo.jpg">
-                    <div class="card__mask-group">
-                        <h3 class="card__title">Руфабго</h3>
-                        <button type="button" class="card__delete-button card__delete-button_active" title="Удалить карточку"></button>
-                        <button type="button" class="card__like-button" title="Лайк"></button>
-                    </div>
-                </li>
-            </ul>
-        </section>
+        <section class="elements"></section>
     </main>
     <footer class="footer">
         <p class="footer__copyright">&copy; 2022 Зинатулина Елена</p>
@@ -93,19 +42,36 @@
             </form>
         </div>
     </div>
-    <div class="popup popup_new-card">
+    <div class="popup popup_add-form">
         <div class="popup__content">
-            <button class="popup__close-button" type="button"></button>
+            <button class="popup__close-button" type="button" name="closeAddButton"></button>
             <h3 class="popup__header">Новое место</h3>
             <form class="popup__info" name="popupAddForm">
                 <input type="text" class="popup__input popup__input_plase-name" name="popupPlaceName"
                     placeholder="Название" required>
                 <input type="url" class="popup__input popup__input_link-images" name="popupLinkImages"
                     placeholder="Ссылка на картинку" required>
-                <button class="popup__submit-button" type="submit">Создать</button> 
+                <button class="popup__submit-button" type="submit">Создать</button>
             </form>
         </div>
     </div>
+    <div class="popup popup_show-image">
+            <button class="popup__button-close" type="button" name="closeImg"></button>
+             <figure class="figure">
+                <img src="#" alt="" class="figure__image">
+            <figcaption class="figure__caption"></figcaption>
+        </figure>
+    </div>
+    <template class="card-template">
+        <li class="card">
+            <img class="card__image" alt="" src="#">
+            <div class="card__mask-group">
+                <h3 class="card__title"></h3>
+                <button type="button" class="card__delete-button" title="Удалить карточку"></button>
+                <button type="button" class="card__like-button" title="Лайк"></button>
+            </div>
+        </li>
+    </template>
     <script src="./scripts/index.js"></script>
 </body>
 
