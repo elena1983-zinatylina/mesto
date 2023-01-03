@@ -1,5 +1,5 @@
-.element__group-button {
-    background-image: url('../../../images/like.png');
+.element__like-button {
+    background: transparent url(../../../images/like.svg);
     background-position: center;
     background-repeat: no-repeat;
     width: 22px;
@@ -10,13 +10,13 @@
     cursor: pointer;
 }
 
-.element__group-button:hover {
+.element__like-button:hover {
     opacity: 0.5;
     
 }
 
 @media (max-width: 320px) {
-    .element__group-button {
+    .element__like-button {
         width: 30px;
     }
 }
