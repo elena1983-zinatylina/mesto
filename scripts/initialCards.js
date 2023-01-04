@@ -1,4 +1,4 @@
-const initialCards = [
+ const initialCards = [
     {
       name: 'Имеритинский пляж',
       link: 'https://mobimg.b-cdn.net/v3/fetch/34/34c098c8bd4e0f075048012ca31331a8.jpeg'
