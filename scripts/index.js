@@ -77,10 +77,12 @@ popupProfile.addEventListener('submit', submitForm)
 
 
 // Добавления карточек при загрузке страницы:
-function creatCard() {
+function creatCard({name, link}) {
 const Card = cardTemplate.cloneNode(true);
 const cardText = Card.querySelector('.card__title');
 cardText.textContent = name;
+const cardImage = Card.querySelector('.card__image');
+cardImage.src = link;
 return Card;
 }
 
