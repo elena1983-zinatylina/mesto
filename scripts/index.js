@@ -129,6 +129,8 @@ function renderCard() {
 
 renderCard();
 
+
+
 //попап добавления новой карточки:
 openPopupNewCards.addEventListener('click', (event) => {
   popupNewCards.classList.add('popup_opened');
@@ -138,3 +140,21 @@ closeAddButton.addEventListener('click', () => {
   popupNewCards.classList.remove('popup_opened');
 });
 
+const popupLinkImages = document.querySelector('.popup__input_link-images');
+const popupPlaceName =  document.querySelector('.popup__input_plase-name');
+const popupAddForm = document.querySelector('.popup__info_new-card');
+
+function newCard(event) {
+  event.preventDefault();
+  cardsContainer.prepend(creatCard(popupLinkImages.value, popupPlaceName.value));
+  closePopup(popupNewCards);
+  popupAddForm.reset();
+}
+
+function submitFormNewCard(event) {
+  event.preventDefault();
+  creatCard();
+  closePopup(popupNewCards);
+}
+
+popupAddForm.addEventListener('submit', newCard);
