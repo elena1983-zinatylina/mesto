@@ -9,11 +9,32 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    width: 190px;
+    max-width: 190px;
 }
 
 @media (max-width: 1279px) {
     .card__title {
         font-size: max(2vw, min(24px));
+
+    }
+}
+
+@media (max-width: 870px) {
+    .card__title {
+        width: max(19.54vw, min(130px));
+
+    }
+}
+
+@media (max-width: 690px) {
+    .card__title {
+        width: max(27.54vw, min(130px));
+
+    }
+}
+
+@media (max-width: 450px) {
+    .card__title {
+        max-width: 190px;
     }
 }

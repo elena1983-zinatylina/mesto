@@ -10,5 +10,11 @@
     background-color: transparent;
     position: absolute;
     border: none;
+    cursor: pointer;
+}
+
+.card__delete-button:hover {
+    opacity: 0.5;
+    
 }
     
