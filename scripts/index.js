@@ -76,10 +76,16 @@ profileAddButton.addEventListener('click', function () {
   openPopup(popupNewCards);
 });
 
-/* закрытие попапов на Х*/
-popupCloseButton.addEventListener('click', () => closePopup(popupEdit));
-closeAddButton.addEventListener('click', () => closePopup(popupNewCards));
 
+// находим все крестики проекта по универсальному селектору
+const closeButtons = document.querySelectorAll('.popup__close-button');
+
+closeButtons.forEach((button) => {
+  // находим 1 раз ближайший к крестику попап 
+  const popup = button.closest('.popup');
+  // устанавливаем обработчик закрытия на крестик
+  button.addEventListener('click', () => closePopup(popup));
+});
 
 function submitForm(event) {
   event.preventDefault();
