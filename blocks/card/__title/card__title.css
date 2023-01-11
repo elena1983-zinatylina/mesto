@@ -35,6 +35,6 @@
 
 @media (max-width: 450px) {
     .card__title {
-        max-width: 190px;
+        min-width: 190px;
     }
 }
