@@ -48,7 +48,10 @@ const popupImage = document.querySelector('.popup_image');
 const closeImage = popupImage.querySelector('.popup__close-button');
 const popupFigureImage = popupImage.querySelector('.popup__figure-image');
 const popupFigureCaption = popupImage.querySelector('.popup__figure-caption');
-
+const cardTemplate = document
+.querySelector('.card-template')
+.content
+.querySelector('.card');
 
 /* Открытие и закрытие попапа */
 
@@ -101,10 +104,7 @@ arrayInitialCards(initialCards);
 /* Создание новой карточки */
 
 function creatCard(cardImage, cardName) {
-  const cardTemplate = document.querySelector('.card-template')
-    .content;
   const newCard = cardTemplate
-    .querySelector('.card')
     .cloneNode(true);
   newCard.querySelector('.card__image')
     .src = cardImage;
@@ -138,15 +138,6 @@ function creatCard(cardImage, cardName) {
 }
 //закрытие попапа с картинкой
 closeImage.addEventListener('click', () => closePopup(popupImage));
-
-//попап добавления новой карточки
-openPopupNewCards.addEventListener('click', (event) => {
-  popupNewCards.classList.add('popup_opened');
-});
-
-closeAddButton.addEventListener('click', () => {
-  popupNewCards.classList.remove('popup_opened');
-});
 
 function submitFormNewCard(event) {
 
