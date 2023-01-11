@@ -49,7 +49,7 @@ const closeImage = popupImage.querySelector('.popup__close-button');
 const popupFigureImage = popupImage.querySelector('.popup__figure-image');
 const popupFigureCaption = popupImage.querySelector('.popup__figure-caption');
 
-/* Открытие попапа через кнопки редактирования профиля и добавления новой карточки*/
+/* Открытие попапа по кнопке EdetButton и AddButton*/
 
 openPopupButton.addEventListener('click', function () {
   popupNameUser.value = profileTitle.textContent;
@@ -77,7 +77,10 @@ function submitForm(event) {
 }
 
 popupProfile.addEventListener('submit', submitForm)
-
+/* закрытие попапов на Х*/
+ popupCloseButton.addEventListener('click', () => closePopup(popupEdit));
+ closeAddButton.addEventListener('click', () => closePopup(popupNewCards));
+ 
 
 /* Открытие и закрытие попапа */
 
@@ -90,10 +93,6 @@ function closePopup(popup) {
 
 }
 
- /* закрытие попапов на Х*/
- popupCloseButton.addEventListener('click', () => closePopup(popupEdit));
- closeAddButton.addEventListener('click', () => closePopup(popupNewCards));
- closeImage.addEventListener('click', () => closePopup(popupImage));
  
 /* перебора массива с карточками и добавление карточек из коробки*/
 
@@ -140,7 +139,8 @@ function creatCard(cardImage, cardName) {
 
   return newCard;
 }
-
+//закрытие попапа с картинкой
+closeImage.addEventListener('click', () => closePopup(popupImage));
 
 //попап добавления новой карточки
 openPopupNewCards.addEventListener('click', (event) => {
