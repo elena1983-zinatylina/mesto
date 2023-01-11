@@ -1,4 +1,4 @@
-.element__like-button {
+.card__like-button {
     background: transparent url(../../../images/like.svg);
     background-position: center;
     background-repeat: no-repeat;
@@ -10,13 +10,13 @@
     cursor: pointer;
 }
 
-.element__like-button:hover {
-    opacity: 0.5;
-    
+.card__like-button:hover {
+    opacity: 0.5;   
 }
 
 @media (max-width: 320px) {
-    .element__like-button {
+    .card__like-button {
         width: 30px;
     }
 }
+
