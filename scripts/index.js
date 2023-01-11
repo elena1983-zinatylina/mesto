@@ -49,38 +49,6 @@ const closeImage = popupImage.querySelector('.popup__close-button');
 const popupFigureImage = popupImage.querySelector('.popup__figure-image');
 const popupFigureCaption = popupImage.querySelector('.popup__figure-caption');
 
-/* Открытие попапа по кнопке EdetButton и AddButton*/
-
-openPopupButton.addEventListener('click', function () {
-  popupNameUser.value = profileTitle.textContent;
-  popupAboutUser.value = profileSubtitle.textContent;
-
-  openPopup(popupEdit);
-});
-
-
-popupCloseButton.addEventListener('cliсk', () => {
-  popupEdit.classList.remove('popup_opened');
-})
-
-
-profileAddButton.addEventListener('click', function () {
-  openPopup(popupNewCards);
-});
-
-
-function submitForm(event) {
-  event.preventDefault();
-  profileTitle.textContent = popupNameUser.value;
-  profileSubtitle.textContent = popupAboutUser.value;
-  closePopup(popupEdit);
-}
-
-popupProfile.addEventListener('submit', submitForm)
-/* закрытие попапов на Х*/
- popupCloseButton.addEventListener('click', () => closePopup(popupEdit));
- closeAddButton.addEventListener('click', () => closePopup(popupNewCards));
- 
 
 /* Открытие и закрытие попапа */
 
@@ -93,12 +61,37 @@ function closePopup(popup) {
 
 }
 
- 
+/* Открытие попапа по кнопке EdetButton и AddButton*/
+openPopupButton.addEventListener('click', function () {
+  popupNameUser.value = profileTitle.textContent;
+  popupAboutUser.value = profileSubtitle.textContent;
+
+  openPopup(popupEdit);
+});
+
+profileAddButton.addEventListener('click', function () {
+  openPopup(popupNewCards);
+});
+
+/* закрытие попапов на Х*/
+popupCloseButton.addEventListener('click', () => closePopup(popupEdit));
+closeAddButton.addEventListener('click', () => closePopup(popupNewCards));
+
+
+function submitForm(event) {
+  event.preventDefault();
+  profileTitle.textContent = popupNameUser.value;
+  profileSubtitle.textContent = popupAboutUser.value;
+  closePopup(popupEdit);
+}
+
+popupProfile.addEventListener('submit', submitForm)
+
 /* перебора массива с карточками и добавление карточек из коробки*/
 
 function arrayInitialCards(initialCards) {
-  initialCards.forEach((item) => {
-    cardsContainer.append(creatCard(item.link, item.name));
+  initialCards.forEach((card) => {
+    cardsContainer.append(creatCard(card.link, card.name));
   })
 }
 
@@ -108,13 +101,17 @@ arrayInitialCards(initialCards);
 /* Создание новой карточки */
 
 function creatCard(cardImage, cardName) {
-  const cardTemplate = document.querySelector('.card-template').content;
-  const newCard = cardTemplate.querySelector('.card').cloneNode(true);
-
-
-  newCard.querySelector('.card__image').src = cardImage;
-  newCard.querySelector('.card__image').alt = cardName;
-  newCard.querySelector('.card__title').textContent = cardName;
+  const cardTemplate = document.querySelector('.card-template')
+    .content;
+  const newCard = cardTemplate
+    .querySelector('.card')
+    .cloneNode(true);
+  newCard.querySelector('.card__image')
+    .src = cardImage;
+  newCard.querySelector('.card__image')
+    .alt = cardName;
+  newCard.querySelector('.card__title')
+    .textContent = cardName;
 
   /* лайк */
   newCard.querySelector('.card__like-button').addEventListener('click', function (event) {
