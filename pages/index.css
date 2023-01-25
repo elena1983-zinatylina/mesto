@@ -44,10 +44,10 @@
 
 
 .form__input-error {
-    display: none;
     color: #ff0000; 
     font-size: 12px;
     line-height: 15px;
+   display: none;
 }
 
 .form__input-error_active {
@@ -55,12 +55,13 @@
     
 }
 
-.form__input_type_error {
-    border-bottom-color: red;}
+.popup__input_type_error{
+    border-bottom: 1px solid red; 
+    margin-bottom: 0; 
+}
    
-    .form__input_is_valid{
-        
-    }
+ 
+    
 
     .popup__submit-button_notactive {
         background: #FFFFFF;
