@@ -34,37 +34,25 @@
 @import url("../blocks/popup/__close-button/popup__close-button.css");
 @import url("../blocks/popup/__header/popup__header.css");
 @import url("../blocks/popup/__submit-button/popup__submit-button.css");
+@import url("../blocks/popup/__submit-button/_notactive/popup__submit-button_notactive.css");
 @import url("../blocks/popup/__info/popup__info.css");
 @import url("../blocks/popup/__input/popup__input.css");
+@import url("../blocks/popup/__input/_type_error/popup__input_type_error.css");
 @import url("../blocks/popup/__image-content/popup__image-content.css");
 @import url("../blocks/popup/__figure/popup__figure.css");
 @import url("../blocks/popup/p__figure-image/popupp__figure-image.css");
 @import url("../blocks/popup/__figure-caption/popup__figure-caption.css");
+@import url("../blocks/form/__input-error/form__input-error.css");
+@import url("../blocks/form/__input-error/_active/form__input-error_active.css");
 
 
 
-.form__input-error {
-    color: #ff0000; 
-    font-size: 12px;
-    line-height: 15px;
-   display: none;
-}
 
-.form__input-error_active {
-    display: block;
-    
-}
 
-.popup__input_type_error{
-    border-bottom: 1px solid red; 
-    margin-bottom: 0; 
-}
-   
- 
-    
 
-    .popup__submit-button_notactive {
-        background: #FFFFFF;
-        box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
-        border-radius: 10px;
-    }
+
+
+
+
+
+
