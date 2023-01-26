@@ -49,20 +49,43 @@ const closeImage = popupImage.querySelector('.popup__close-button');
 const popupFigureImage = popupImage.querySelector('.popup__figure-image');
 const popupFigureCaption = popupImage.querySelector('.popup__figure-caption');
 const cardTemplate = document
-.querySelector('.card-template')
-.content
-.querySelector('.card');
+  .querySelector('.card-template')
+  .content
+  .querySelector('.card');
+const esc = 'Escape';
 
 /* Открытие и закрытие попапа */
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('mousedown', setOverlayListener);
+  document.addEventListener('keydown', setEscListener);
+
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-
+  document.removeEventListener('mousedown', setOverlayListener);
+  document.removeEventListener('keydown', setEscListener);
 }
+
+
+// Функция закрытия по оверлею 
+const setOverlayListener = function (evt) {
+  const openedPopup = document.querySelector('.popup_opened');
+  if (evt.target === openedPopup) {
+    closePopup(openedPopup);
+  }
+}
+
+// Функция закрытия по кнопке Escape
+const setEscListener = function (evt) {
+  if (evt.key === esc) {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  }
+}
+
 
 /* Открытие попапа по кнопке EdetButton и AddButton*/
 openPopupButton.addEventListener('click', function () {
@@ -155,3 +178,17 @@ function submitFormNewCard(event) {
 
 popupAddForm.addEventListener('submit', submitFormNewCard);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
