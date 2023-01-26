@@ -33,7 +33,7 @@ const hasInvalidInput = (inputList) => {
 
 const toggleButtonState = (inputList, submitButtonElement, config) => {
 
-    if (hasInvalidInput) {
+    if (hasInvalidInput(inputList)) {
         submitButtonElement.classList.add(config.inactiveButtonClass);
         submitButtonElement.setAttribute("disabled", true);
     } else {
@@ -50,8 +50,8 @@ const setEventListeners = (formElement, config) => {
     inputList.forEach(inputElement => {
 
         const handleInput = (event) => {
-            checkValidity(formElement, inputElement);
-            toggleButtonState(inputList, submitButtonElement)
+            checkValidity(formElement, inputElement, config);
+            toggleButtonState(inputList, submitButtonElement, config)
         };
 
         inputElement.addEventListener('input', handleInput);
