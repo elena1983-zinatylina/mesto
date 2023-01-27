@@ -60,7 +60,7 @@ const setEventListeners = (formElement, config) => {
     toggleButtonState(inputList, submitButtonElement, config);
 };
 
-function buttonBlock(formElement, config) {
+function blockedButton(formElement, config) {
     const buttonElement = formElement.querySelector(config.submitButtonSelector)
     buttonElement.classList.add(config.inactiveButtonClass)
     buttonElement.setAttribute('disabled', 'disabled');
@@ -71,7 +71,7 @@ const enableValidation = (config) => {
     formsList.forEach((formElement) => {
 
         formElement.addEventListener('submit', (event) => {
-           buttonBlock(formElement, config);
+            blockedButton(formElement, config);
         });
 
         setEventListeners(formElement, config);
