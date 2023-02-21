@@ -7,47 +7,47 @@ const closeImgButton = popupImage.querySelector('.popup__close-button');
 
 
 export class Card {
-    constructor(templateSelector, name, link) {
-        this._templateSelector = templateSelector;
-        this._name = name;
-        this._link = link
-        
-       
-    }
-
-      _getTemplate() {
-        const cardElement = document
-          .querySelector(this._templateSelector)
-          .content
-          .querySelector('.card')
-          .cloneNode(true);
-    
-        return cardElement;
-      }
-
-    generateCard() {
-        this._element = this._getTemplate();
-        this._setEventListeners();
-       
-        this._element.querySelector('.card__title').textContent = this._name;
-        this._element.querySelector('.card__image').src = this._link;
-       
-        return this._element;
-    }
+  constructor(templateSelector, name, link) {
+    this._templateSelector = templateSelector;
+    this._name = name;
+    this._link = link
 
 
-//открыть попап увеличения фото
-_openPopup() {
-  openPopup(popupImage)
-  popupFigureImage.src = this._link;
-  popupFigureCaption.textContent = this._name;
-  popupFigureImage.alt = this._name;
-  closeImgButton.addEventListener('click', () => {
+  }
+
+  _getTemplate() {
+    const cardElement = document
+      .querySelector(this._templateSelector)
+      .content
+      .querySelector('.card')
+      .cloneNode(true);
+
+    return cardElement;
+  }
+
+  generateCard() {
+    this._element = this._getTemplate();
+    this._setEventListeners();
+
+    this._element.querySelector('.card__title').textContent = this._name;
+    this._element.querySelector('.card__image').src = this._link;
+
+    return this._element;
+  }
+
+
+  //открыть попап увеличения фото
+  _openPopup() {
+    openPopup(popupImage)
+    popupFigureImage.src = this._link;
+    popupFigureCaption.textContent = this._name;
+    popupFigureImage.alt = this._name;
+    closeImgButton.addEventListener('click', () => {
       closePopup(popupNewCard);
-  })
-}
-//слушатели карточки
-_setEventListeners() {
+    })
+  }
+  //слушатели карточки
+  _setEventListeners() {
     this._element.querySelector(".card__like-button").addEventListener('click', () => {
       this._handleLikeCard();
     })
@@ -57,7 +57,7 @@ _setEventListeners() {
     this._element.querySelector(".card__image").addEventListener('click', () => {
       this._openPopup();
       popupAddForm.reset();
-      
+
     })
   }
 

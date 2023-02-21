@@ -86,12 +86,14 @@ openPopupButton.addEventListener('click', function () {
 
   openPopup(popupEdit);
 
-  const validator = new FormValidator (config, popupProfile);
-validator.enableValidation();
+  const validator = new FormValidator(config, popupProfile);
+  validator.enableValidation();
 });
 
 profileAddButton.addEventListener('click', function () {
   openPopup(popupNewCards);
+  const validator = new FormValidator(config, popupAddForm);
+validator.enableValidation();
 });
 
 //объединить обработчики оверлея и крестиков
@@ -127,6 +129,8 @@ function renderCard(link, name) {
   const cardTemplate = new Card('.card-template', name, link);
 
   cardsContainer.prepend(cardTemplate.generateCard());
+
+  
 }
 
 //добавление новых карточек
@@ -135,19 +139,14 @@ function submitFormNewCard(event) {
   event.preventDefault();
 
   renderCard(popupLinkImages.value, popupPlaceName.value);
- 
+
   popupAddForm.reset();
   closePopup(popupNewCards);
-  
-  
+
+
 };
 
 popupAddForm.addEventListener('submit', submitFormNewCard);
-
-
-const validator = new FormValidator (config, popupAddForm);
-validator.enableValidation();
-
 
 
 export { openPopup, closePopup };
