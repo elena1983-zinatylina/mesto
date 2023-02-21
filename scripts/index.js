@@ -85,6 +85,9 @@ openPopupButton.addEventListener('click', function () {
   popupAboutUser.value = profileSubtitle.textContent;
 
   openPopup(popupEdit);
+
+  const validator = new FormValidator (config, popupProfile);
+validator.enableValidation();
 });
 
 profileAddButton.addEventListener('click', function () {
@@ -135,7 +138,7 @@ function submitFormNewCard(event) {
  
   popupAddForm.reset();
   closePopup(popupNewCards);
-  popupSubmitButton.disabled = true;
+  
   
 };
 
