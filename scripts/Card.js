@@ -29,8 +29,11 @@ export class Card {
     this._element = this._getTemplate();
     this._setEventListeners();
 
-    this._element.querySelector('.card__title').textContent = this._name;
-    this._element.querySelector('.card__image').src = this._link;
+    const title = this._element.querySelector('.card__title');
+    const image =  this._element.querySelector('.card__image');
+    image.src = this._link;
+    image.alt = this._name;
+    title.textContent = this._name;
 
     return this._element;
   }
@@ -42,9 +45,7 @@ export class Card {
     popupFigureImage.src = this._link;
     popupFigureCaption.textContent = this._name;
     popupFigureImage.alt = this._name;
-    closeImgButton.addEventListener('click', () => {
-      closePopup(popupNewCard);
-    })
+   
   }
   //слушатели карточки
   _setEventListeners() {
@@ -56,8 +57,7 @@ export class Card {
     })
     this._element.querySelector(".card__image").addEventListener('click', () => {
       this._openPopup();
-      popupAddForm.reset();
-
+     
     })
   }
 

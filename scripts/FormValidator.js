@@ -70,7 +70,7 @@ _blockedButton() {
 }
 
 enableValidation  ()  {
-    const formsList = Array.from(this._formElement.querySelectorAll(this._config.inputSelector));
+    const formsList = this._formElement.querySelectorAll(this._config.inputSelector);
     formsList.forEach((formElement) => {
 
         this._formElement.addEventListener('submit', () => {
