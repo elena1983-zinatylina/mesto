@@ -7,11 +7,11 @@ const closeImgButton = popupImage.querySelector('.popup__close-button');
 
 
 export class Card {
-  constructor(templateSelector, name, link) {
+  constructor(templateSelector, name, link, /*handleCardClick*/) {
     this._templateSelector = templateSelector;
     this._name = name;
     this._link = link
-
+   // this._handleCardClick = handleCardClick;
 
   }
 
@@ -28,12 +28,13 @@ export class Card {
   generateCard() {
     this._element = this._getTemplate();
     this._setEventListeners();
+    this._likeButton = this._element.querySelector(".card__like-button");
 
-    const title = this._element.querySelector('.card__title');
-    const image =  this._element.querySelector('.card__image');
-    image.src = this._link;
-    image.alt = this._name;
-    title.textContent = this._name;
+    this._title = this._element.querySelector('.card__title');
+    this._image =  this._element.querySelector('.card__image');
+    this._image.src = this._link;
+    this._image.alt = this._name;
+    this._title.textContent = this._name;
 
     return this._element;
   }
@@ -49,7 +50,8 @@ export class Card {
   }
   //слушатели карточки
   _setEventListeners() {
-    this._element.querySelector(".card__like-button").addEventListener('click', () => {
+     this._likeButton = this._element.querySelector(".card__like-button");
+    this._likeButton.addEventListener('click', () => {
       this._handleLikeCard();
     })
     this._element.querySelector(".card__delete-button").addEventListener('click', () => {
@@ -59,10 +61,13 @@ export class Card {
       this._openPopup();
      
     })
+    //this._image.addEventListener('click', () => {
+      //this._handleCardClick(this._name, this._link);
+   // });
   }
 
   _handleLikeCard() {
-    this._element.querySelector(".card__like-button").classList.toggle("card__like-button_active");
+    this._likeButton.classList.toggle("card__like-button_active");
   }
 
   _handleDeleteCard() {

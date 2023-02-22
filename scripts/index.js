@@ -43,7 +43,6 @@ const popupNewCards = document.querySelector('.popup_new-card');
 const popupLinkImages = popupNewCards.querySelector('.popup__input_link-images');
 const popupPlaceName = popupNewCards.querySelector('.popup__input_plase-name');
 const popupAddForm = popupNewCards.querySelector('.popup__info_new-card');
-//const popupAddCard = document.querySelector('.popup__info');
 const cardTemplate = document
   .querySelector('.card-template')
   .content
@@ -64,6 +63,7 @@ const config = {
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', setEscListener);
+  enableValidation(config, popup);
 }
 
 function closePopup(popup) {
@@ -86,14 +86,13 @@ openPopupButton.addEventListener('click', function () {
 
   openPopup(popupEdit);
 
-  const validator = new FormValidator(config, popupProfile);
-  validator.enableValidation();
+  //const validator = new FormValidator(config, popupProfile);
+  //validator.enableValidation();
 });
 
 profileAddButton.addEventListener('click', function () {
   openPopup(popupNewCards);
-  const validator = new FormValidator(config, popupAddForm);
-validator.enableValidation();
+
 });
 
 //объединить обработчики оверлея и крестиков
@@ -113,14 +112,16 @@ function submitForm(event) {
   event.preventDefault();
   profileTitle.textContent = popupNameUser.value;
   profileSubtitle.textContent = popupAboutUser.value;
+
   closePopup(popupEdit);
+  
 }
 
 popupProfile.addEventListener('submit', submitForm)
 
 
 
-/* перебора массива с карточками и добавление карточек из коробки*/
+/* Добавления карточек при загрузке страницы*/
 initialCards.forEach(function (card) {
   renderCard(card.link, card.name);
 })
@@ -128,26 +129,45 @@ initialCards.forEach(function (card) {
 function renderCard(link, name) {
   const cardTemplate = new Card('.card-template', name, link);
 
-  cardsContainer.prepend(cardTemplate.generateCard());
+  cardsContainer.prepend(cardTemplate.generateCard()); 
 
-  
+ 
 }
+
+/*function createCard(name, link) {
+  const cardTemplate = new Card(name, link, handleCardClick);
+  const cardElement = cardTemplate.generateCard();
+  return cardElement
+*/
+  
+/* export function handleCardClick(name, link) /{
+  устанавливаем ссылку
+  устанавливаем подпись картинке
+  popupNewCards.open(name, link)
+}*/
+
 
 //добавление новых карточек
 function submitFormNewCard(event) {
 
   event.preventDefault();
 
+ 
   renderCard(popupLinkImages.value, popupPlaceName.value);
-
+  const resetValidation = new FormValidator(config, popupAddForm)
   popupAddForm.reset();
-  closePopup(popupNewCards);
 
+  closePopup(popupNewCards);
+  resetValidation.resetValidation();
 
 };
 
 popupAddForm.addEventListener('submit', submitFormNewCard);
 
+const enableValidation = (config, popup) => {
+  const validator = new FormValidator(config, popup);
+  validator.enableValidation();
+}
 
 export { openPopup, closePopup };
 
