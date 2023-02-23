@@ -122,23 +122,23 @@ popupProfile.addEventListener('submit', submitForm)
 
 
 /* Добавления карточек при загрузке страницы*/
-initialCards.forEach(function (card) {
-  renderCard(card.link, card.name);
+initialCards.forEach(function (item) {
+  createCard(item.link, item.name);
 })
 
-function renderCard(link, name) {
+/*function renderCard(link, name) {
   const cardTemplate = new Card('.card-template', name, link);
 
   cardsContainer.prepend(cardTemplate.generateCard()); 
 
  
-}
+}*/
 
-/*function createCard(name, link) {
-  const cardTemplate = new Card(name, link, handleCardClick);
+function createCard(item) {
+  const cardTemplate = new Card('.card-template', item);
   const cardElement = cardTemplate.generateCard();
   return cardElement
-*/
+}
   
 /* export function handleCardClick(name, link) /{
   устанавливаем ссылку
