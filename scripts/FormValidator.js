@@ -70,24 +70,17 @@ export class FormValidator {
   }
 
   resetValidation() {
-    this._toggleButtonState(); //<== управляем кнопкой ==
+    this._toggleButtonState(); 
 
     this._inputList.forEach((inputElement) => {
-      this._hideError(inputElement) //<==очищаем ошибки ==
+      this._hideError(inputElement) 
     });
 
   }
 
   enableValidation() {
-    const formsList = this._formElement.querySelectorAll(this._config.inputSelector);
-    formsList.forEach((formElement) => {
-
-      this._formElement.addEventListener('submit', () => {
-        this._blockedButton();
-      });
 
       this._setEventListeners();
-    });
+    };
   };
 
-}
