@@ -64,30 +64,11 @@ export class FormValidator {
     this._toggleButtonState();
   };
 
-  _blockedButton() {
-    this._submitButtonElement.classList.add(this._config.inactiveButtonClass)
-    this._submitButtonElement.setAttribute('disabled', 'disabled');
-  }
-
-  resetValidation() {
-    this._toggleButtonState(); //<== управляем кнопкой ==
-
-    this._inputList.forEach((inputElement) => {
-      this._hideError(inputElement) //<==очищаем ошибки ==
-    });
-
-  }
 
   enableValidation() {
-    const formsList = this._formElement.querySelectorAll(this._config.inputSelector);
-    formsList.forEach((formElement) => {
-
-      this._formElement.addEventListener('submit', () => {
-        this._blockedButton();
-      });
 
       this._setEventListeners();
-    });
+    };
+    
   };
 
-}

@@ -7,7 +7,7 @@ const closeImgButton = popupImage.querySelector('.popup__close-button');
 
 
 export class Card {
-  constructor(templateSelector, name, link, /*handleCardClick*/) {
+  constructor(templateSelector, name, link /*handleCardClick*/) {
     this._templateSelector = templateSelector;
     this._name = name;
     this._link = link
