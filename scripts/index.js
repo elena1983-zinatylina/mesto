@@ -79,6 +79,8 @@ const setEscListener = function (evt) {
   }
 }
 
+const validatorEditProfile = new FormValidator(config, popupEdit); //создали экземпляр
+validatorEditProfile.enableValidation(); //включили валидацию 1 раз
 /* Открытие попапа по кнопке EdetButton*/
 openPopupButton.addEventListener('click', function () {
   popupNameUser.value = profileTitle.textContent;
@@ -86,10 +88,7 @@ openPopupButton.addEventListener('click', function () {
 
   openPopup(popupEdit);
   //popupProfile.reset();
-  const validatorEditProfile = new FormValidator(config, popupEdit);
-  validatorEditProfile.enableValidation();
-
-
+  validatorEditProfile.resetValidation // сбрасываем валидацию
 });
 
 
@@ -151,15 +150,15 @@ function submitFormNewCard(event) {
 
 };
 
+const validatorNewCard = new FormValidator(config, popupNewCards); //создали экземпляр
+validatorNewCard.enableValidation();//включили валидацию 1 раз
 //кнопка открытия попап новой карточки
 profileAddButton.addEventListener('click', () => {
   openPopup(popupNewCards);
   popupAddForm.reset();
-
-  const validatorNewCard = new FormValidator(config, popupNewCards);
-  validatorNewCard.enableValidation();
-
+  validatorNewCard.resetValidation // сбрасываем валидацию
 });
+ 
 popupAddForm.addEventListener('submit', submitFormNewCard);
 
 
