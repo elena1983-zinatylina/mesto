@@ -28,6 +28,24 @@ export class FormValidator {
     });
   };
 
+  _blockedButton() { 
+
+    this._submitButtonElement.classList.add(this._config.inactiveButtonClass) 
+
+    this._submitButtonElement.setAttribute('disabled', 'disabled'); 
+
+  } 
+
+  resetValidation() {
+    this._toggleButtonState(); //<== управляем кнопкой ==
+
+    this._inputList.forEach((inputElement) => {
+      this._hideError(inputElement) //<==очищаем ошибки ==
+    });
+
+  }
+
+
   _checkValidity(inputElement) {
     if (!inputElement.validity.valid) {
       this._showError(inputElement);
@@ -66,6 +84,12 @@ export class FormValidator {
 
 
   enableValidation() {
+
+    this._formElement.addEventListener('submit', () => { 
+
+      this._blockedButton(); 
+
+    }); 
 
       this._setEventListeners();
     };
