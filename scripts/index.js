@@ -63,7 +63,7 @@ const config = {
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', setEscListener);
-  enableValidation(config, popup);
+
 }
 
 function closePopup(popup) {
@@ -79,21 +79,19 @@ const setEscListener = function (evt) {
   }
 }
 
-/* Открытие попапа по кнопке EdetButton и AddButton*/
+/* Открытие попапа по кнопке EdetButton*/
 openPopupButton.addEventListener('click', function () {
   popupNameUser.value = profileTitle.textContent;
   popupAboutUser.value = profileSubtitle.textContent;
 
   openPopup(popupEdit);
+  //popupProfile.reset();
+  const validatorEditProfile = new FormValidator(config, popupEdit);
+  validatorEditProfile.enableValidation();
 
-  //const validator = new FormValidator(config, popupProfile);
-  //validator.enableValidation();
-});
-
-profileAddButton.addEventListener('click', function () {
-  openPopup(popupNewCards);
 
 });
+
 
 //объединить обработчики оверлея и крестиков
 popups.forEach((popup) => {
@@ -114,32 +112,23 @@ function submitForm(event) {
   profileSubtitle.textContent = popupAboutUser.value;
 
   closePopup(popupEdit);
-  
+
 }
 
 popupProfile.addEventListener('submit', submitForm)
 
-
-
 /* Добавления карточек при загрузке страницы*/
 initialCards.forEach(function (item) {
-  createCard(item.link, item.name);
+  const cardElement = createCard(item);
+  cardsContainer.prepend(cardElement)
 })
 
-/*function renderCard(link, name) {
-  const cardTemplate = new Card('.card-template', name, link);
-
-  cardsContainer.prepend(cardTemplate.generateCard()); 
-
- 
-}*/
-
 function createCard(item) {
-  const cardTemplate = new Card('.card-template', item);
+  const cardTemplate = new Card('.card-template', item.name, item.link);
   const cardElement = cardTemplate.generateCard();
   return cardElement
 }
-  
+
 /* export function handleCardClick(name, link) /{
   устанавливаем ссылку
   устанавливаем подпись картинке
@@ -147,27 +136,34 @@ function createCard(item) {
 }*/
 
 
+
 //добавление новых карточек
 function submitFormNewCard(event) {
 
   event.preventDefault();
 
- 
-  renderCard(popupLinkImages.value, popupPlaceName.value);
-  const resetValidation = new FormValidator(config, popupAddForm)
-  popupAddForm.reset();
-
+  const newCard = {
+    name: popupPlaceName.value,
+    link: popupLinkImages.value,
+  };
+  cardsContainer.prepend(createCard(newCard))
   closePopup(popupNewCards);
-  resetValidation.resetValidation();
 
 };
 
+//кнопка открытия попап новой карточки
+profileAddButton.addEventListener('click', () => {
+  openPopup(popupNewCards);
+  popupAddForm.reset();
+
+  const validatorNewCard = new FormValidator(config, popupNewCards);
+  validatorNewCard.enableValidation();
+
+});
 popupAddForm.addEventListener('submit', submitFormNewCard);
 
-const enableValidation = (config, popup) => {
-  const validator = new FormValidator(config, popup);
-  validator.enableValidation();
-}
+
+
 
 export { openPopup, closePopup };
 

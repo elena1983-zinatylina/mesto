@@ -64,23 +64,11 @@ export class FormValidator {
     this._toggleButtonState();
   };
 
-  _blockedButton() {
-    this._submitButtonElement.classList.add(this._config.inactiveButtonClass)
-    this._submitButtonElement.setAttribute('disabled', 'disabled');
-  }
-
-  resetValidation() {
-    this._toggleButtonState(); 
-
-    this._inputList.forEach((inputElement) => {
-      this._hideError(inputElement) 
-    });
-
-  }
 
   enableValidation() {
 
       this._setEventListeners();
     };
+    
   };
 
