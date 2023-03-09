@@ -8,7 +8,7 @@
     <meta name="description" content="Проект Место с Яндекс Практикумом в Краснодарском крае">
     <link rel="stylesheet" href="./pages/index.css">
     <title>Место</title>
-    <script src="./scripts/index.js" type="module" defer></script>
+    <script src="./pages/index.js" type="module" defer></script>
 </head>
 
 <body class="page">
@@ -37,10 +37,10 @@
             <button class="popup__close-button" type="button"></button>
             <h3 class="popup__header">Редактировать профиль</h3>
             <form class="popup__info popup__info_profile" name="popupProfile" novalidate>
-                <input type="text" class="popup__input popup__input_user_name" name="popupNameUser" id="user-name"
+                <input type="text" class="popup__input popup__input_user_name" name="name" id="user-name"
                     placeholder="Краснодар" minlength="2" maxlength="40" required>
                 <span class="popup__input-error" id="user-name-error"></span>
-                <input type="text" class="popup__input popup__input_user_about" name="popupAboutUser" id="about-user"
+                <input type="text" class="popup__input popup__input_user_about" name="description" id="about-user"
                     placeholder="Любимый край" minlength="2" maxlength="40" required>
                 <span class="popup__input-error" id="about-user-error"></span>
                 <button class="popup__submit-button" type="submit">Сохранить</button>
