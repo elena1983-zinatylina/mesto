@@ -80,7 +80,7 @@ profileAddButton.addEventListener('click', () => {
   generateNewCard.open();
 });
 
-// ------------------------окно редактирования--------------------------
+//окно редактирования профиля
 
 const popupEditProfile = new PopupWithForm('.popup_edit', submitForm);
 
