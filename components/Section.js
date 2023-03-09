@@ -1,4 +1,4 @@
-  export  class Section {
+  export default class Section {
     constructor({ items, renderer }, containerSelector) {
       this._items = items; //это массив данных
       this._renderer = renderer; //это функция, которая отвечает за создание и отрисовку данных на странице

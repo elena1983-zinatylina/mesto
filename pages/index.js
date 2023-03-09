@@ -1,7 +1,7 @@
 
-import {Card} from '../components/Card.js';
-import {Section} from '../components/Section.js';
-import {FormValidator} from '../components/FormValidator.js';
+import Card from '../components/Card.js';
+import Section from '../components/Section.js';
+import FormValidator from '../components/FormValidator.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
@@ -35,20 +35,19 @@ import {
 
 
 /* Открытие и закрытие попапа */
-const popupWithImage = new PopupWithImage('.popup_image', popupFigureImage, popupFigureCaption);
+const popupWithImage = new PopupWithImage('.popup_image',);
 
 popupWithImage.setEventListeners();
 
-// фун-ция открытия большрй картинки
-function handleCardClick() {
-  popupWithImage.open(this.getNameImage(), this.getLinkImage())
-};
 
+const handleCardClick = (name, link) => {
+  popupWithImage.open({name, link});
+}
 // карточки
 const cardList = new Section({
   items: initialCards,
   renderer: (item) => {
-      const newCard = createNewCard(item);
+    const newCard = createCard(item);
       cardList.addItem(newCard);
     }
   },
@@ -58,15 +57,17 @@ const cardList = new Section({
 cardList.renderItems();
 
 
-const generateNewCard = new PopupWithForm('.popup_new-card', (data) => {
-  const newCard = createNewCard(data);
+const createNewCard = new PopupWithForm('.popup_new-card', () => {
+  const newCard = createCard({ name: popupPlaceName.value,
+    link: popupLinkImages.value,});
   cardList.addItem(newCard);
 });
 
-generateNewCard.setEventListeners();
+createNewCard.setEventListeners();
+  
 
 // создаем элемент карточки и возвращаем саму карточку
-function createNewCard(data) {
+function createCard(data) {
   const card = new Card(data, '.card-template', handleCardClick); // экземпляр карточки
   const cardElement = card.generateCard();  // создаем карточку
 
@@ -77,35 +78,35 @@ function createNewCard(data) {
 // нажатие на кнопку добавления новой карточки
 profileAddButton.addEventListener('click', () => {
   validatorNewCard.resetValidation();
-  generateNewCard.open();
+  createNewCard.open();
 });
 
 //окно редактирования профиля
-
-const popupEditProfile = new PopupWithForm('.popup_edit', submitForm);
-
-popupEditProfile.setEventListeners();
-
 const userInfo = new UserInfo({
-  dataName: '.popup__input_user_name',
-  dataDescription: '.popup__input_user_about',
+  dataNameSelector: '.profile__title',
+  dataDescriptionSelector: '.profile__subtitle',
 });
 
-//функция отправки на сервер редактированного профиля
-function submitForm (data) {
+const popupEditProfile = new PopupWithForm('.popup_edit', submiteditForm);
+popupEditProfile.setEventListeners();
+
+function submiteditForm (data) {
   userInfo.setUserInfo(data);
   popupEditProfile.close();
-};
+}
+
+
 
 // нажатие на кнопку редактирования
 openPopupButton.addEventListener('click', () => {
+  popupEditProfile.open();
   validatorEditProfile.resetValidation();
-  const {name, description} = userInfo.getUserInfo();
+  const { name, description } = userInfo.getUserInfo();
 
   popupNameUser.value = name;
   popupAboutUser.value = description;
 
-  popupEditProfile.open();
+  
 });
 
 // ------------------------валидация форм--------------------------

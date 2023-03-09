@@ -1,19 +1,17 @@
-import {Popup} from "./Popup.js";
+import Popup from "./Popup.js";
 
  class PopupWithImage extends Popup {
-  constructor(popupSelector, popupFigureImage, popupFigureCaption) {
+  constructor(popupSelector) {
 		super(popupSelector);
-		this._popupFigureImage = popupFigureImage;
-		this._popupFigureCaption = popupFigureCaption;
+		this._image = this._popup.querySelector('.popup__figure-image');
+		this._title = this._popup.querySelector('.popup__figure-caption');
     
 	}
 
-open(name, link) {
-		//передаем параметры карточки (картинка)
-		this._popupFigureImage.src = link;
-		this._popupFigureImage.alt = name;
-		//передаем параметры карточки (название)
-		this._popupFigureCaption.textContent = name;
+open(item) {
+	this._image.src = item.link;
+    this._image.alt = item.name;
+    this._title.textContent = item.name; 
 
 		super.open();
 	}

@@ -1,5 +1,5 @@
 //import { openPopup, closePopup } from './index.js';
- export class Card {
+ export default class Card {
   constructor(data, templateSelector, handleCardClick) {
     this._templateSelector = templateSelector;
     this._name = data.name;
@@ -10,13 +10,13 @@
   }
 
   _getTemplate() {
-    const cardElement = document
+    return document
       .querySelector(this._templateSelector)
       .content
       .querySelector('.card')
       .cloneNode(true);
 
-    return cardElement;
+    
   }
 
   generateCard() {
@@ -34,15 +34,6 @@
     return this._element;
   }
 
-
-  //открыть попап увеличения фото
-  _openPopup() {
-    openPopup(popupImage)
-    popupFigureImage.src = this._link;
-    popupFigureCaption.textContent = this._name;
-    popupFigureImage.alt = this._name;
-   
-  }
   //слушатели карточки
   _setEventListeners() {
     this._likeButton = this._element.querySelector(".card__like-button");
@@ -57,6 +48,8 @@
     this._image.addEventListener('click', () => {
       this._handleCardClick(this._name, this._link);
     });
+    
+   
    };
   
 
@@ -68,14 +61,7 @@
     this._element.remove();
     
   }
-  getNameImage() {
-    return this._name;
-  }
-
-  getLinkImage() {
-    return this._link;
-  }
-
+  
 
 }
 
