@@ -1,6 +1,7 @@
-import Card from '../components/Card.js';
-import Section from '../components/Section.js';
-import FormValidator from '../components/FormValidator.js';
+
+import {Card} from '../components/Card.js';
+import {Section} from '../components/Section.js';
+import {FormValidator} from '../components/FormValidator.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
@@ -44,25 +45,10 @@ function handleCardClick() {
 };
 
 // карточки
-// создаем элемент карточки и возвращаем саму карточку
-function createCard(data) {
-  const card = new Card(data, '.card-template', handleCardClick); // экземпляр карточки
-  const cardElement = card.generateCard(); // создаем карточку
-
-  return cardElement; // возвращаем созданную карточку
-};
-
-const generateNewCard = new PopupWithForm('.popup_new-card', (data) => {
-  const newCard = createCard(data);
-  cardList.addItem(newCard);
-});
-
-generateNewCard.setEventListeners();
-
 const cardList = new Section({
   items: initialCards,
   renderer: (item) => {
-      const newCard = createCard(item);
+      const newCard = createNewCard(item);
       cardList.addItem(newCard);
     }
   },
@@ -70,6 +56,22 @@ const cardList = new Section({
 );
 
 cardList.renderItems();
+
+
+const generateNewCard = new PopupWithForm('.popup_new-card', (data) => {
+  const newCard = createNewCard(data);
+  cardList.addItem(newCard);
+});
+
+generateNewCard.setEventListeners();
+
+// создаем элемент карточки и возвращаем саму карточку
+function createNewCard(data) {
+  const card = new Card(data, '.card-template', handleCardClick); // экземпляр карточки
+  const cardElement = card.generateCard();  // создаем карточку
+
+  return cardElement; // возвращаем созданную карточку
+};
 
 
 // нажатие на кнопку добавления новой карточки
