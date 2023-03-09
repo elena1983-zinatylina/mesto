@@ -1,4 +1,4 @@
- export default class FormValidator {
+export default class FormValidator {
   constructor(config, formElement) {
     this._config = config;
     this._formElement = formElement;
@@ -28,13 +28,13 @@
     });
   };
 
-  _blockedButton() { 
+  _blockedButton() {
 
-    this._submitButtonElement.classList.add(this._config.inactiveButtonClass) 
+    this._submitButtonElement.classList.add(this._config.inactiveButtonClass)
 
-    this._submitButtonElement.setAttribute('disabled', 'disabled'); 
+    this._submitButtonElement.setAttribute('disabled', 'disabled');
 
-  } 
+  }
 
   resetValidation() {
     this._toggleButtonState(); //<== управляем кнопкой ==
@@ -44,7 +44,6 @@
     });
 
   }
-
 
   _checkValidity(inputElement) {
     if (!inputElement.validity.valid) {
@@ -67,7 +66,7 @@
 
   _setEventListeners = () => {
 
-    
+
 
     this._inputList.forEach(inputElement => {
 
@@ -85,15 +84,14 @@
 
   enableValidation() {
 
-    this._formElement.addEventListener('submit', () => { 
+    this._formElement.addEventListener('submit', () => {
 
-      this._blockedButton(); 
+      this._blockedButton();
 
-    }); 
+    });
 
-      this._setEventListeners();
-    };
-    
+    this._setEventListeners();
   };
 
-  
+};
+

@@ -16,12 +16,6 @@ import Popup from "./Popup.js";
     return this._inputValue;
   }
 
-  //setInputValues(data) {
-   //this._popupInput.forEach((input) => {
- //     input.value = data[input.name];
- //   })
-// }
-
   setEventListeners() {
     super.setEventListeners();
 
