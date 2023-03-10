@@ -1,3 +1,3 @@
 module.exports = {
-    entry: { index: './src/scripts/index.js' }
+    entry: { index: './src/scripts/index.js'}
    }
