@@ -9,27 +9,12 @@ import UserInfo from '../components/UserInfo.js';
 import {
   initialCards,
   config,
-  popup,
   popupEdit,
   openPopupButton,
   popupNewCards,
-  popupProfile,
   popupNameUser,
-  profileTitle,
   popupAboutUser,
-  profileSubtitle,
-  cardsContainer,
   profileAddButton,
-  popupSubmitButton,
-  popupLinkImages,
-  popupPlaceName,
-  popupAddForm,
-  popupImage,
-  popupFigureCaption,
-  popupFigureImage,
-  closeImgButton,
-  cardTemplate,
-  popups,
 } from '../utils/constants.js';
 
 
@@ -56,30 +41,25 @@ const cardList = new Section({
 cardList.renderItems();
 
 
-const createNewCard = new PopupWithForm('.popup_new-card', () => {
-  const newCard = createCard({
-    name: popupPlaceName.value,
-    link: popupLinkImages.value,
-  });
+const addNewCard = new PopupWithForm('.popup_new-card', (data) => {
+  const newCard = createCard(data);
   cardList.addItem(newCard);
 });
 
-createNewCard.setEventListeners();
+addNewCard.setEventListeners();
 
 
 // создаем элемент карточки и возвращаем саму карточку
 function createCard(data) {
-  const card = new Card(data, '.card-template', handleCardClick); 
-  const cardElement = card.generateCard();  
-
-  return cardElement;
-};
+  const card = new Card(data, '.card-template', handleCardClick);
+  return card.generateCard();
+}; 
 
 
 // нажатие на кнопку добавления новой карточки
 profileAddButton.addEventListener('click', () => {
   validatorNewCard.resetValidation();
-  createNewCard.open();
+  addNewCard.open();
 });
 
 //окно редактирования профиля

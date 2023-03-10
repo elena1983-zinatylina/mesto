@@ -61,25 +61,10 @@ export const config = {
 };
 
 export {
-    popup,
     popupEdit,
     openPopupButton,
     popupNewCards,
-    popupProfile,
     popupNameUser,
-    profileTitle,
     popupAboutUser,
-    profileSubtitle,
-    cardsContainer,
     profileAddButton,
-    popupSubmitButton,
-    popupLinkImages,
-    popupPlaceName,
-    popupAddForm,
-    popupImage,
-    popupFigureCaption,
-    popupFigureImage,
-    closeImgButton,
-    cardTemplate,
-    popups,
 }
