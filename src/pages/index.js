@@ -5,6 +5,7 @@ import FormValidator from '../components/FormValidator.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
+import Api from "../components/Api.js";
 
 import {
   initialCards,
@@ -100,3 +101,10 @@ validatorEditProfile.enableValidation();
 const validatorNewCard = new FormValidator(config, popupNewCards);
 validatorNewCard.enableValidation();
 
+const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-61',
+  headers: {
+    authorization: 'dbb1bb43-1b72-40d9-a456-fa264cdb846f',
+    'Content-Type': 'application/json'
+  }
+})
