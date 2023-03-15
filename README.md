@@ -96,3 +96,4 @@ Grid сетки;
 
 * [Ссылка на Проект "Место"](https://elena1983-zinatylina.github.io/mesto)
 
+* [Ссылка на Проект "Место" Github pages](https://elena1983-zinatylina.github.io/mesto)
