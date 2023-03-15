@@ -6,6 +6,7 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 import Api from "../components/Api.js";
+import PopupDeleteCard from "../components/PopupDeleteCard";
 
 import {
   initialCards,
@@ -92,6 +93,13 @@ openPopupButton.addEventListener('click', () => {
 
 
 });
+
+// Создаем попап с подтверждением удаления карточки
+const deleteCardPopup = new PopupDeleteCard({
+  popupSelector: '.popup_delete-card'
+});
+deleteCardPopup.setEventListeners();
+
 
 //валидация форм
 

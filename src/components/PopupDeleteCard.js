@@ -18,3 +18,12 @@ export default class PopupDeleteCard extends Popup{
     })
   }
 }
+
+
+
+
+
+
+
+
+
