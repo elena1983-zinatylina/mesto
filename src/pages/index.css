@@ -45,7 +45,15 @@
 @import url("../blocks/popup/__input-error/popup__input-error.css");
 @import url("../blocks/popup/__input-error/_active/popup__input-error_active.css");
 
-
+.card__likes-number {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    display: block;
+    text-align: center;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: #000;
+  }
 
 
 
