@@ -20,7 +20,7 @@ getInitialCards() {
 }
 
 // Добавление новой карточки через попап
-addCard(data) {
+aditCard(data) {
   return fetch(`${this._baseUrl}/cards`, {
     method: 'POST',
     headers: this._headers,
@@ -38,7 +38,7 @@ deleteCard(cardId) {
     method: 'DELETE',
     headers: this._headers
   })
-    .then(res => this._parseResponse(res));
+    .then(res => this._validateQuery(res));
 }
 
 // Ставим лайк карточке
@@ -47,7 +47,7 @@ setLike(cardId) {
     method: 'PUT',
     headers: this._headers
   })
-    .then(res => this._parseResponse(res));
+    .then(res => this._validateQuerye(res));
 }
 
 // Удаляем лайк
@@ -73,8 +73,8 @@ editUserInfo(data) {
     method: 'PATCH',
     headers: this._headers,
     body: JSON.stringify({
-      name: data.username,
-      about: data.job
+      name: data.name,
+      description: data.description
     })
   })
     .then(res => this._validateQuery(res));

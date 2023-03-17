@@ -6,7 +6,7 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 import Api from "../components/Api.js";
-import PopupDeleteCard from "../components/PopupDeleteCard";
+import PopupDeleteCard from "../components/PopupDeleteCard.js";
 
 import {
   initialCards,
@@ -17,12 +17,140 @@ import {
   popupNameUser,
   popupAboutUser,
   profileAddButton,
-} from '../utils/constants.js';
+  popupAvatar,
+  formAvatar,
+  buttonAvatar,
+  avatar
+}
+ from '../utils/constants.js';
+
+/* ---------- API ----------- */
+const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-61',
+  headers: {
+    authorization: 'dbb1bb43-1b72-40d9-a456-fa264cdb846f',
+    'Content-Type': 'application/json'
+  }
+})
+let userId;
+
+// Загрузка готовых карточек и данных о пользователе с сервера
+Promise.all([api.getInitialCards(), api.getUserInfo()])
+  .then(([initialCards, userData]) => {
+    userInfo.setUserInfo(userData);
+    userId = userData._id;
+    cardsList.renderItems(initialCards);
+  })
+  .catch((err) => {
+    console.log(`Ошибка: ${err}`);
+  });
+
+
+  /* -------------- Профиль юзера --------------- */
+//окно редактирования профиля
+const userInfo = new UserInfo({
+  name: '.profile__title',
+  description: '.profile__subtitle',
+  avatar: '.profile__avatar'
+});
+
+const popupEditProfile = new PopupWithForm({
+  popupSelector: '.popup_edit', 
+  handleFormSubmit: (dataForm) =>{
+popupEditProfile.loading(true);
+api.editUserInfo(dataForm)
+      .then((dataForm) => {
+        userInfo.setUserInfo(dataForm);
+        popupEditProfile.close();
+      })
+      .catch((err) => {
+        console.log(`Ошибка: ${err}`);
+      })
+      .finally(() => {
+        popupEditProfile.loading(false);
+      });
+  }
+});
+popupEditProfile.setEventListeners();
+
+//function submiteditForm(data) {
+  //userInfo.setUserInfo(data);
+ // popupEditProfile.close();
+//}
+ //Заносим данные в форму попапа редактирования профиля
+function fillInFormInputs({name, description}) {
+  popupNameUser.value = name;
+  popupAboutUser.value = description;
+}
+
+// Создание попапа редактирования аватара пользователя
+const editAvatarPopup = new PopupWithForm({
+  popupSelector: '.popup_avatar',
+  handleFormSubmit: (data) => {
+    editAvatarPopup.loading(true);
+    api.editAvatar(data)
+      .then((data) => {
+        avatar.src = data.avatar;
+        editAvatarPopup.close();
+      })
+      .catch((err) => {
+        console.log(`Ошибка: ${err}`);
+      })
+      .finally(() => {
+        editAvatarPopup.loading(false);
+      });
+  }
+});
+editAvatarPopup.setEventListeners();
+
+
+// Обработчик кнопки Edit аватара пользователя
+buttonAvatar.addEventListener('click', () => {
+  AvatarValidator.toggleButtonState();
+  editAvatarPopup.open();
+});
+// Обработчик кнопки Edit попапа редактирования профиля
+openPopupButton.addEventListener('click', () => {
+  const info = userInfo.getUserInfo();
+  fillInFormInputs({
+    name: info.name,
+    description: info.description
+  });
+  popupEditProfile.open();
+  validatorEditProfile.resetValidation();
+
+});
+
+
+const validatorEditProfile = new FormValidator(config, popupEdit);
+validatorEditProfile.enableValidation();
+
+
+
+
+// нажатие на кнопку редактирования
+//openPopupButton.addEventListener('click', () => {
+
+  //popupEditProfile.open();
+ // validatorEditProfile.resetValidation();
+
+  //const { name, description } = userInfo.getUserInfo();
+
+ // popupNameUser.value = name;
+ // popupAboutUser.value = description;
+
+
+//});
+
+
+
+//валидация форм
+
+
+
 
 
 /* ----------- Карточки с изображениями ----------- */
-
-
 
 
 const addNewCard = new PopupWithForm({
@@ -48,7 +176,7 @@ openPopupButton.addEventListener('click', () => {
   validatorNewCard.toggleButtonState();
   popupNewCards.open();
 })
-const popupWithImage = new PopupWithImage('.popup_image',);
+const popupWithImage = new PopupWithImage('.popup_image');
 
 popupWithImage.setEventListeners();
 
@@ -59,7 +187,8 @@ validatorNewCard.enableValidation();
 // создаем элемент карточки и возвращаем саму карточку
 function createCard(data) {
   const card = new Card(
-    {data: data, templateSelector:'.card-template', userId: userId, 
+    {data: data, templateSelector:'.card-template', 
+    userId: userId, 
     handleCardClick: (name, link) => {
       popupWithImage.open({ name, link });
     },
@@ -122,82 +251,9 @@ profileAddButton.addEventListener('click', () => {
 });
 
 
-/* -------------- Профиль юзера --------------- */
-//окно редактирования профиля
-const userInfo = new UserInfo({
-  dataName: '.profile__title',
-  dataDescription: '.profile__subtitle',
-  avatar: '.profile__avatar'
-});
 
-const popupEditProfile = new PopupWithForm({
-  popupSelector: '.popup_edit', 
-  submiteditForm: (dataForm) =>{
-popupEditProfile.loading(true);
-api.editUserInfo(dataForm)
-      .then((dataForm) => {
-        userInfo.setUserInfo(dataForm);
-        editProfilePopup.close();
-      })
-      .catch((err) => {
-        console.log(`Ошибка: ${err}`);
-      })
-      .finally(() => {
-        editProfilePopup.loading(false);
-      });
-  }
-});
-popupEditProfile.setEventListeners();
-
-
-function submiteditForm(data) {
-  userInfo.setUserInfo(data);
-  popupEditProfile.close();
-}
+const AvatarValidator = new FormValidator(config,  formAvatar);
+AvatarValidator.enableValidation();
 
 
 
-// нажатие на кнопку редактирования
-openPopupButton.addEventListener('click', () => {
-
-  popupEditProfile.open();
-  validatorEditProfile.resetValidation();
-
-  const { name, description } = userInfo.getUserInfo();
-
-  popupNameUser.value = name;
-  popupAboutUser.value = description;
-
-
-});
-
-
-
-//валидация форм
-
-const validatorEditProfile = new FormValidator(config, popupEdit);
-validatorEditProfile.enableValidation();
-
-
-
-
-/* ---------- API ----------- */
-const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-61',
-  headers: {
-    authorization: 'dbb1bb43-1b72-40d9-a456-fa264cdb846f',
-    'Content-Type': 'application/json'
-  }
-})
-//let userId;
-
-// Загрузка готовых карточек и данных о пользователе с сервера
-Promise.all([api.getInitialCards(), api.getUserInfo()])
-  .then(([initialCards, userData]) => {
-    userInfo.setUserInfo(userData);
-    userId = userData._id;
-    cardsList.renderItems(initialCards);
-  })
-  .catch((err) => {
-    console.log(`Ошибка: ${err}`);
-  });
