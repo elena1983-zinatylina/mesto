@@ -1,7 +1,7 @@
 //import { openPopup, closePopup } from './index.js';
 export default class Card {
-  constructor(data, templateSelector, handleCardClick, userId, handleDeleteIconClick, handleSetLike, handleRemoveLike) {
-    this._templateSelector = templateSelector;
+  constructor({data, cardSelector, handleCardClick, userId, handleDeleteIconClick, handleSetLike, handleRemoveLike}) {
+    this._cardSelector = cardSelector;
     this._name = data.name;
     this._link = data.link
     this._handleCardClick = handleCardClick;
@@ -12,31 +12,29 @@ export default class Card {
     this._likes = data.likes;
     this._handleSetLike = handleSetLike;
     this._handleRemoveLike = handleRemoveLike;
+    //this._card = this._getTemplate();
   }
 
   _getTemplate() {
-   
-      this._card = document
-      .querySelector(this._templateSelector)
-      .content
-      .querySelector('.card')
-      .cloneNode(true);
+    return document
+    .querySelector(this._cardSelector)
+    .content
+    .querySelector('.card')
+    .cloneNode(true);
 
-      return this._card;
-  }
+}
 
   generateCard() {
     this._element = this._getTemplate();
     this._setEventListeners();
     this._hasDeleteButton();
     this._isCardLiked();
-    this._likesNumber.textContent = this._likes.length;
     this._title = this._element.querySelector('.card__title');
-    this._likesNumber = this._element.querySelector('.element__likes-number');
+    this._likesNumber = this._element.querySelector('.card__likes-number');
     this._image.src = this._link;
     this._image.alt = this._name;
     this._title.textContent = this._name;
-
+    this._likesNumber.textContent = this._likes.length;
     return this._element;
   }
 
@@ -95,8 +93,5 @@ handleLikeCard(data) {
   }
 }
 
+
 }
-
-
-
-

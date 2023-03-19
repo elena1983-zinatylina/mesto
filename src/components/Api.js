@@ -20,7 +20,7 @@ getInitialCards() {
 }
 
 // Добавление новой карточки через попап
-aditCard(data) {
+addCard(data) {
   return fetch(`${this._baseUrl}/cards`, {
     method: 'POST',
     headers: this._headers,
@@ -68,25 +68,25 @@ getUserInfo() {
 }
 
 // Редактирование информации о пользователе через попап
-editUserInfo(data) {
+editUserInfo(name, description) {
   return fetch(`${this._baseUrl}/users/me`, {
     method: 'PATCH',
     headers: this._headers,
     body: JSON.stringify({
-      name: data.name,
-      description: data.description
+      name: name,
+      about: description
     })
   })
     .then(res => this._validateQuery(res));
 }
 
 // Редактирование аватара пользователя через попап
-editAvatar(data) {
+editAvatar(src) {
   return fetch(`${this._baseUrl}/users/me/avatar`, {
     method: 'PATCH',
     headers: this._headers,
     body: JSON.stringify({
-      avatar: data.avatar
+      avatar: src
     })
   })
     .then(res => this._validateQuery(res));

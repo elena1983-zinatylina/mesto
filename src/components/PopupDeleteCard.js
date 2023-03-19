@@ -8,14 +8,14 @@ export default class PopupDeleteCard extends Popup{
     }
  // принимает коллбэк на удаление карточки
  setCardObject(removing) {
-  this._submitForm = removing;
+  this._handleFormSubmit = removing;
   }
 
   setEventListeners() {
     super.setEventListeners();
     this._form.addEventListener('click', (event) => {
       event.preventDefault();
-      this._submitForm();
+      this._handleFormSubmit();
     });
   }
 }
