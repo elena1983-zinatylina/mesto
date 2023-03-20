@@ -81,12 +81,12 @@ editUserInfo(name, description) {
 }
 
 // Редактирование аватара пользователя через попап
-editAvatar(src) {
+editAvatar(data) {
   return fetch(`${this._baseUrl}/users/me/avatar`, {
     method: 'PATCH',
     headers: this._headers,
     body: JSON.stringify({
-      avatar: src
+      avatar: data.avatar
     })
   })
     .then(res => this._validateQuery(res));

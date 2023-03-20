@@ -15,9 +15,11 @@
     </header>
     <main>
         <section class="profile">
+            <div class="profile__avatar-container">
             <button class="profile__avatar-button"></button>
              <img class="profile__avatar" src="<%=require('./images/ava-Краснодар.jpg')%>" alt="картика Краснодар Аврора"   name="avatar" id="avatar">
-            <div class="profile__info">
+            </div>
+             <div class="profile__info">
                 <h1 class="profile__title">Краснодар</h1>
                 <button type="button" class="profile__edit-button"></button>
                 <p class="profile__subtitle">Любимый край</p>
@@ -97,8 +99,10 @@
             <div class="card__mask-group">
                 <h3 class="card__title"></h3>
                 <button type="button" class="card__delete-button" title="Удалить карточку"></button>
+             <div class="place__likes">
                 <button type="button" class="card__like-button" title="Лайк"></button>
                 <span class="card__likes-number"></span>
+            </div>
             </div>
         </li>
     </template>

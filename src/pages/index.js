@@ -54,7 +54,7 @@ const editAvatarPopup = new PopupWithForm({
   popupSelector: '.popup_avatar',
   handleFormSubmit: (data) => {
     editAvatarPopup.loading(true);
-    api.editAvatar(data.avatar)
+    api.editAvatar(data)
       .then((data) => {
         avatar.src = data.avatar;
         editAvatarPopup.close();
@@ -71,7 +71,7 @@ editAvatarPopup.setEventListeners();
 
 // Обработчик кнопки Edit аватара пользователя
 buttonAvatar.addEventListener('click', () => {
-  AvatarValidator.toggleButtonState();
+  AvatarValidator.resetValidation();
   editAvatarPopup.open();
 });
 
