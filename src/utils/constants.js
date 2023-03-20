@@ -50,7 +50,11 @@ const cardTemplate = document
     .querySelector('.card');
 const esc = 'Escape';
 const popups = document.querySelectorAll('.popup');
-
+const popupAvatar = document.querySelector('.popup_avatar');
+const formAvatar = document.querySelector('.popup__info_avatar');
+const buttonAvatar = document.querySelector('.profile__avatar-button');
+const avatar = document.querySelector('.profile__avatar');
+const popupDelete = document.querySelector('.popup_delete-card');
 export const config = {
     formSelector: '.popup__info',
     inputSelector: '.popup__input',
@@ -67,4 +71,9 @@ export {
     popupNameUser,
     popupAboutUser,
     profileAddButton,
+    popupAvatar,
+    formAvatar,
+    buttonAvatar,
+    avatar,
+    popupDelete
 }

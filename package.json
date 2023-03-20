@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/elena1983-zinatylina/mesto#readme",
   "devDependencies": {
-    "@babel/core": "^7.21.0",
+    "@babel/core": "^7.21.3",
     "@babel/preset-env": "^7.20.2",
     "autoprefixer": "^10.4.14",
     "babel-loader": "^9.1.2",
@@ -31,7 +31,7 @@
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.7.3",
     "postcss-loader": "^7.0.2",
-    "webpack": "^5.76.0",
+    "webpack": "^5.76.2",
     "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^4.11.1"
   },
