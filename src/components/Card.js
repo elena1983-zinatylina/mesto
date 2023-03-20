@@ -1,6 +1,6 @@
 //import { openPopup, closePopup } from './index.js';
 export default class Card {
-  constructor({data, cardSelector, handleCardClick, userId, handleDeleteIconClick, handleSetLike, handleRemoveLike}) {
+  constructor({ data, cardSelector, handleCardClick, userId, handleDeleteIconClick, handleSetLike, handleRemoveLike }) {
     this._cardSelector = cardSelector;
     this._name = data.name;
     this._link = data.link
@@ -17,12 +17,12 @@ export default class Card {
 
   _getTemplate() {
     return document
-    .querySelector(this._cardSelector)
-    .content
-    .querySelector('.card')
-    .cloneNode(true);
+      .querySelector(this._cardSelector)
+      .content
+      .querySelector('.card')
+      .cloneNode(true);
 
-}
+  }
 
   generateCard() {
     this._element = this._getTemplate();
@@ -39,7 +39,7 @@ export default class Card {
 
   }
 
-  //слушатели карточки
+  
   _setEventListeners() {
     this._likeButton = this._element.querySelector(".card__like-button");
     this._likeButton.addEventListener('click', () => {
@@ -59,41 +59,41 @@ export default class Card {
     });
     this._deleteButton.addEventListener('click', () => {
       this._handleDeleteIconClick(this._cardId);
-      
+
     })
   };
 
 
   //_handleLikeCard() {
-   // this._likeButton.classList.toggle("card__like-button_active");
+  // this._likeButton.classList.toggle("card__like-button_active");
   //};
 
   _handleDeleteCard() {
     this._element.remove();
     this._element = null;
   }
-// проверяем владельца карточки и убираем кнопку Delete
-_hasDeleteButton() {
-  if (this._userId !== this._cardOwnerId) {
-    this._deleteButton.remove();
+ 
+  _hasDeleteButton() {
+    if (this._userId !== this._cardOwnerId) {
+      this._deleteButton.remove();
+    }
   }
-}
 
-// поставить/удалить лайк, изменение количества лайков
-handleLikeCard(data) {
-  this._likes = data.likes;
-  this._likesNumber.textContent = this._likes.length;
-  this._likeButton.classList.toggle('card__like-button_active');
-}
-
- // Проверка, стоит ли лайк на карточке
- _isCardLiked() {
-  if (this._likes.some((user) => {
-    return this._userId === user._id;
-  })) {
-    this._likeButton.classList.add('card__like-button_active');
+ 
+  handleLikeCard(data) {
+    this._likes = data.likes;
+    this._likesNumber.textContent = this._likes.length;
+    this._likeButton.classList.toggle('card__like-button_active');
   }
-}
+
+  
+  _isCardLiked() {
+    if (this._likes.some((user) => {
+      return this._userId === user._id;
+    })) {
+      this._likeButton.classList.add('card__like-button_active');
+    }
+  }
 
 
 }

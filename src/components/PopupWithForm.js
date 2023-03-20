@@ -1,7 +1,7 @@
 import Popup from "./Popup.js";
 
- class PopupWithForm extends Popup {
-  constructor({popupSelector, handleFormSubmit}) {
+class PopupWithForm extends Popup {
+  constructor({ popupSelector, handleFormSubmit }) {
     super(popupSelector);
     this._handleFormSubmit = handleFormSubmit;
     this._popupForm = this._popup.querySelector('.popup__info');
@@ -33,21 +33,21 @@ import Popup from "./Popup.js";
     this._popupForm.reset();
   }
 
-// Изменяем состояние кнопки во время загрузки
-loading(isLoading) {
-  if (isLoading) {
-    this._submitButton.textContent = 'Сохранение...'
-  } else {
-    this._submitButton.textContent = this._submitButtonText;
- }
-}
+  // Изменяем состояние кнопки во время загрузки
+  loading(isLoading) {
+    if (isLoading) {
+      this._submitButton.textContent = 'Сохранение...'
+    } else {
+      this._submitButton.textContent = this._submitButtonText;
+    }
+  }
 }
 //showLoading() {
- // this._submitButtom.textContent = 'Сохранение...'
+// this._submitButtom.textContent = 'Сохранение...'
 //}
 
 //hideLoading() {
- // this._submitButtom.textContent = this._submitButtonText
+// this._submitButtom.textContent = this._submitButtonText
 //}
 
 export default PopupWithForm;
