@@ -36,6 +36,7 @@ export default class Card {
     this._title.textContent = this._name;
     this._likesNumber.textContent = this._likes.length;
     return this._element;
+
   }
 
   //слушатели карточки
@@ -58,6 +59,7 @@ export default class Card {
     });
     this._deleteButton.addEventListener('click', () => {
       this._handleDeleteIconClick(this._cardId);
+      
     })
   };
 

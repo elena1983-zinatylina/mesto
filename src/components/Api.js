@@ -47,7 +47,7 @@ setLike(cardId) {
     method: 'PUT',
     headers: this._headers
   })
-    .then(res => this._validateQuerye(res));
+    .then(res => this._validateQuery(res));
 }
 
 // Удаляем лайк
