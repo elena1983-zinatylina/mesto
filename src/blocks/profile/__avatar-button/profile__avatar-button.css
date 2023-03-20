@@ -7,6 +7,20 @@
     border: 0;
     transition: .8s ease;
   }
+
+  @media (max-width: 767px) {
+    .profile__avatar-button {
+        width: 160px;
+        height: 160px;
+    }
+}
+
+@media (max-width: 320px) {
+    .profile__avatar-button {
+        width: 120px;
+        height: 120px;
+    }
+}
   
   .profile__avatar-button:hover {
     opacity: 0.8;

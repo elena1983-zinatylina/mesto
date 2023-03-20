@@ -62,7 +62,7 @@ export const config = {
     inputSelector: '.popup__input',
     submitButtonSelector: '.popup__submit-button',
     inactiveButtonClass: 'popup__submit-button_notactive',
-    inputErrorClass: 'popup__input_type_error',
+    inputErrorClass: 'popup__input_error',
     errorClass: 'popup__input-error_active'
 };
 
