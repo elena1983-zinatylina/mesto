@@ -10,7 +10,6 @@ import PopupDeleteCard from "../components/PopupDeleteCard.js";
 
 
 import {
-  initialCards,
   config,
   popupEdit,
   openPopupButton,
@@ -19,7 +18,6 @@ import {
   popupAboutUser,
   profileAddButton,
   popupAvatar,
-  formAvatar,
   buttonAvatar,
   avatar,
   popupDelete
