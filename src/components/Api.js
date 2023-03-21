@@ -33,7 +33,7 @@ export default class Api {
   }
 
   // Удаление карточки
-  deleteCard(cardId) {
+  handleDeleteCard(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: 'DELETE',
       headers: this._headers
@@ -68,13 +68,13 @@ export default class Api {
   }
 
   // Редактирование информации о пользователе 
-  setUserInfo(name, description) {
+  editUserInfo(data) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
-        name: name,
-        about: description
+        name: data.name,
+        about: data.description
       })
     })
       .then(res => this._validateQuery(res));

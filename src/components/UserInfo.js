@@ -20,4 +20,5 @@ export default class UserInfo {
 		this._description.textContent = data.about;
 		this._avatar.src = data.avatar;
 	}
+
 }
